@@ -17,13 +17,16 @@ return {
   -- { import = "nvchad.blink.lazyspec" },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+      },
+    },
   },
 
   -- pretty diagnostics panel
@@ -44,5 +47,42 @@ return {
       -- add any custom options here
     },
     lazy = true,
+  },
+
+  { "nvzone/menu", lazy = true },
+
+  {
+    {
+      "supermaven-inc/supermaven-nvim",
+      config = function()
+        require("supermaven-nvim").setup {}
+      end,
+    },
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+
+      {
+        "supermaven-inc/supermaven-nvim",
+        config = function()
+          require("supermaven-nvim").setup {}
+        end,
+      },
+
+      {
+        "hrsh7th/cmp-cmdLine",
+        event = "CmdlineEnter",
+        config = function()
+          local cmp = require "cmp"
+
+          cmp.setup.cmdline("/", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = { { name = "buffer" } },
+          })
+        end,
+      },
+    },
   },
 }
