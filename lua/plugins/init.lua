@@ -67,7 +67,13 @@ return {
       {
         "supermaven-inc/supermaven-nvim",
         config = function()
-          require("supermaven-nvim").setup {}
+          require("supermaven-nvim").setup {
+            keymaps = {
+              accept_suggestion = "<Space><Tab>",
+              clear_suggestion = "<C-]>",
+              accept_word = "<C-j>",
+            },
+          }
         end,
       },
 
@@ -80,6 +86,20 @@ return {
           cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = { { name = "buffer" } },
+          })
+
+          cmp.setup.cmdline(":", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+              { name = "path" },
+            }, {
+              {
+                name = "cmdline",
+                option = {
+                  ignore_cmds = { "Man", "!" },
+                },
+              },
+            }),
           })
         end,
       },
