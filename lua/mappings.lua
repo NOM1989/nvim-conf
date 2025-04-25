@@ -21,3 +21,6 @@ map({ "n", "v" }, "<RightMouse>", function()
 
   require("menu").open(options, { mouse = true })
 end, {})
+
+-- load the session for the current directory
+map("n", "<leader>qs", function() require("persistence").load() end, { desc = "Restore Session" })

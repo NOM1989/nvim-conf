@@ -8,9 +8,7 @@ return {
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
+    opts = require "configs.lspconfig",
   },
 
   -- test new blink
@@ -25,6 +23,7 @@ return {
         "vimdoc",
         "html",
         "css",
+        "python",
       },
     },
   },
@@ -33,9 +32,7 @@ return {
   {
     "folke/trouble.nvim",
     cmd = "Trouble",
-    config = function()
-      require("trouble").setup()
-    end,
+    opts = {},
     lazy = true,
   },
 
@@ -43,39 +40,30 @@ return {
   {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    opts = {
-      -- add any custom options here
-    },
+    opts = {},
     lazy = true,
   },
 
   { "nvzone/menu", lazy = true },
 
   {
-    {
-      "supermaven-inc/supermaven-nvim",
-      config = function()
-        require("supermaven-nvim").setup {}
-      end,
-    },
+    "supermaven-inc/supermaven-nvim",
+    lazy = true,
+    event = "InsertEnter",
+    config = function()
+      require("supermaven-nvim").setup {
+        keymaps = {
+          accept_suggestion = "<Space><Tab>",
+          clear_suggestion = "<C-]>",
+          accept_word = "<C-j>",
+        },
+      }
+    end,
   },
 
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-
-      {
-        "supermaven-inc/supermaven-nvim",
-        config = function()
-          require("supermaven-nvim").setup {
-            keymaps = {
-              accept_suggestion = "<Space><Tab>",
-              clear_suggestion = "<C-]>",
-              accept_word = "<C-j>",
-            },
-          }
-        end,
-      },
 
       {
         "hrsh7th/cmp-cmdLine",
