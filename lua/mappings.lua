@@ -23,4 +23,19 @@ map({ "n", "v" }, "<RightMouse>", function()
 end, {})
 
 -- load the session for the current directory
-map("n", "<leader>qs", function() require("persistence").load() end, { desc = "Restore Session" })
+map("n", "<leader>qs", function()
+  require("persistence").load()
+end, { desc = "Restore Session" })
+
+-- Floating diagnostic
+map("n", "ff", function()
+  vim.diagnostic.open_float { border = "rounded", close_events = { "CursorMoved" } }
+end, { desc = "Floating diagnostic" })
+
+-- Move line(s)
+map("n", "<A-Up>", "ddkP", {desc = "Move line up"} )
+map("n", "<A-Down>", "ddp", {desc = "Move line down"} )
+map("v", "<A-Up>", ":m-2<CR>gv=gv", { desc = "Move line up" })
+map("v", "<A-Down>", ":m'>+<CR>gv=gv", { desc = "Move line down" })
+
+map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
