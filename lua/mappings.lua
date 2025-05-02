@@ -39,3 +39,6 @@ map("v", "<A-Up>", ":m-2<CR>gv=gv", { desc = "Move line up" })
 map("v", "<A-Down>", ":m'>+<CR>gv=gv", { desc = "Move line down" })
 
 map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
+
+-- Change windows
+map("n", "<leader><leader>", "<C-W><C-W>", { desc = "Previous window" })

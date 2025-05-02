@@ -11,6 +11,7 @@ local options = {
     astro = { "prettier" },
     python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
     bib = { "bibtex-tidy" },
+    zsh = { "beautysh" },
   },
 
   -- Old ones:

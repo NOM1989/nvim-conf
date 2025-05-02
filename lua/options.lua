@@ -10,7 +10,7 @@ o.scrolloff = 7
 local g = vim.g
 if g.neovide then
   -- Put anything you want to happen only in Neovide here
-  o.guifont = "JetBrains Mono:h14"
+  o.guifont = "JetBrains Mono:h16"
 end
 
 local autocmd = vim.api.nvim_create_autocmd
@@ -22,3 +22,5 @@ autocmd({ 'VimLeave', 'VimSuspend' }, {
     o.guicursor = "a:ver100,a:blinkon1"
   end
 })
+
+o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal"
