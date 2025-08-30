@@ -30,6 +30,14 @@ return {
     },
   },
 
+  -- Don't need as:
+  -- normal H toggles dotfiles
+  -- normal I toggles gitignore
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   opts = { filters = { dotfiles = false } },
+  -- },
+
   -- pretty diagnostics panel
   {
     "folke/trouble.nvim",
