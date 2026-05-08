@@ -1,5 +1,14 @@
 return {
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = {
+        timeout = 2000,
+      },
+    },
+  },
+
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
@@ -28,15 +37,12 @@ return {
         "markdown_inline",
       },
     },
+    init = function()
+      vim.filetype.add {
+        extension = { ndjson = "json" },
+      }
+    end,
   },
-
-  -- Don't need as:
-  -- normal H toggles dotfiles
-  -- normal I toggles gitignore
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   opts = { filters = { dotfiles = false } },
-  -- },
 
   -- pretty diagnostics panel
   {
@@ -63,7 +69,7 @@ return {
     config = function()
       require("supermaven-nvim").setup {
         keymaps = {
-          accept_suggestion = "<C-Tab>",
+          accept_suggestion = "<C-\\>",
           clear_suggestion = "<C-]>",
           accept_word = "<C-j>",
         },
@@ -164,8 +170,9 @@ return {
         -- } },
       },
       -- scroll = { enabled = true },
-      -- bigfile = { enabled = true },
+      bigfile = { enabled = true, notify = false },
       lazygit = { enabled = true },
+      -- words = { enabled = true, debounce = 100, },
     },
     keys = {
       {
@@ -187,5 +194,46 @@ return {
         -- Configuration here, or leave empty to use defaults
       }
     end,
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    cmd = "DiffviewOpen",
+    opts = {},
+    lazy = true,
+  },
+
+  -- Not working atm :/
+  -- {
+  --   "chenggouA/uv.nvim",
+  --   ft = { "python" },
+  --   -- dependencies = {
+  --   --   "folke/snacks.nvim",
+  --   -- },
+  --   opts = {
+  --     picker_integration = true,
+  --   },
+  -- },
+
+  -- {
+  --   "sphamba/smear-cursor.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     stiffness = 0.8,
+  --     trailing_stiffness = 0.5,
+  --     distance_stop_animating = 0.5,
+  --   },
+  -- },
+
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
   },
 }

@@ -1,7 +1,5 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -33,8 +31,8 @@ map("n", "ff", function()
 end, { desc = "Floating diagnostic" })
 
 -- Move line(s)
-map("n", "<A-Up>", "ddkP", {desc = "Move line up"} )
-map("n", "<A-Down>", "ddp", {desc = "Move line down"} )
+map("n", "<A-Up>", "ddkP", { desc = "Move line up" })
+map("n", "<A-Down>", "ddp", { desc = "Move line down" })
 map("v", "<A-Up>", ":m-2<CR>gv=gv", { desc = "Move line up" })
 map("v", "<A-Down>", ":m'>+<CR>gv=gv", { desc = "Move line down" })
 
@@ -42,3 +40,14 @@ map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
 
 -- Change windows
 map("n", "<leader><leader>", "<C-W><C-W>", { desc = "Previous window" })
+
+-- Make :Q and :Qa behave like :q and :qa
+vim.cmd('cnoreabbrev Q q')
+vim.cmd('cnoreabbrev Qa qa')
+
+-- Toggle wrap
+map("n", "<leader>z", ":set wrap!<CR>", { desc = "Toggle wrap" })
+
+-- Ease navigation in long wrapped lines
+map("n", "<Up>", "gk", { desc = "Navigate display line up" })
+map("n", "<Down>", "gj", { desc = "Navigate display line down" })

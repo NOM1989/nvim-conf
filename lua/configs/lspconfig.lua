@@ -17,6 +17,7 @@ local servers = {
   cssls = {},
   lua_ls = {},
   bashls = {},
+  csharp_ls = {},
 
   pyright = {
     settings = {
