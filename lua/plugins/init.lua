@@ -188,4 +188,9 @@ return {
       }
     end,
   },
+
+  -- {
+  --   "eandrju/cellular-automaton.nvim",
+  --   event = "VeryLazy",
+  -- },
 }

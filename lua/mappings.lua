@@ -42,3 +42,14 @@ map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
 
 -- Change windows
 map("n", "<leader><leader>", "<C-W><C-W>", { desc = "Previous window" })
+
+-- Make :Q and :Qa behave like :q and :qa
+vim.cmd('cnoreabbrev Q q')
+vim.cmd('cnoreabbrev Qa qa')
+
+-- Toggle wrap
+map("n", "<leader>z", ":set wrap!<CR>", { desc = "Toggle wrap" })
+
+-- Ease navigation in long wrapped lines
+map("n", "<Up>", "gk", { desc = "Navigate display line up" })
+map("n", "<Down>", "gj", { desc = "Navigate display line down" })
