@@ -66,6 +66,12 @@ M.ui = {
       tailwind = false,
     },
   },
+  statusline = {
+    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "file_pct" },
+    modules = {
+      file_pct = "%#St_pos_sep#%#St_pos_icon# %#St_pos_text# %p%% ",
+    },
+  },
 }
 
 return M
